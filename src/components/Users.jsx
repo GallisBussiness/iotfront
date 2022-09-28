@@ -14,7 +14,6 @@ import createUserModal from './modals/createUserModal'
 import updateUserModal from './modals/updateUserModal'
 import './datatable.css'
 import { createUser, getUsers, removeUser, updateUser } from '../services/userservice'
-import { FaUsers } from 'react-icons/fa';
 
 const Users = ({auth}) => {
 
@@ -133,13 +132,7 @@ const Users = ({auth}) => {
               <img className="relative z-20 w-32 pt-6 h-32" src="/img/users.svg" alt="users" />
             </div>
           </div>
-          <div className="max-w-full h-40 px-3 mt-12 ml-auto text-center lg:mt-0 lg:w-5/12 hidden lg:block">
-            <div className="h-full bg-gradient-to-tl from-green-700 to-green-300 rounded-xl">
-              <div className="relative flex items-center justify-center h-full">
-                        <FaUsers className="h-32 w-32 bg-white text-green-600 rounded-full"/>
-              </div>
-            </div>
-          </div>
+         
         </div>
       </div>
     </div>

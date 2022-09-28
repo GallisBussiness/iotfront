@@ -1,5 +1,3 @@
-import { MdSensors } from 'react-icons/md';
-
 const Capteurs = () => {
   return (
     <>
@@ -12,13 +10,6 @@ const Capteurs = () => {
             <div className="flex items-center justify-center h-full">
               <h5 className="font-bold text-3xl">Gestion des Capteurs</h5>
               <img className="relative z-20 w-32 pt-6 h-32" src="/img/iot.png" alt="iot" />
-            </div>
-          </div>
-          <div className="max-w-full h-40 px-3 mt-12 ml-auto text-center lg:mt-0 lg:w-5/12 hidden lg:block">
-            <div className="h-full bg-gradient-to-tl from-green-700 to-green-300 rounded-xl">
-              <div className="relative flex items-center justify-center h-full">
-                        <MdSensors className="h-32 w-32 bg-white text-green-600 rounded-full"/>
-              </div>
             </div>
           </div>
         </div>

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Sidebar } from 'primereact/sidebar'
+import { SplitButton } from 'primereact/splitbutton'
 import { Link, useNavigate } from "react-router-dom";
 import { useQueryClient } from "react-query";
 import { useSignOut } from "react-auth-kit";
+import { GiTreeBranch } from "react-icons/gi";
+import { MdSensors } from "react-icons/md";
 
 export const Navbar = () => {
     const [visible,setVisible] = useState(false);
@@ -18,6 +21,23 @@ export const Navbar = () => {
       }
     }
 
+    const items = [
+      {
+          label: 'Parametrer les cultures',
+          icon: <GiTreeBranch className="h-6 w-6 bg-white text-green-600 rounded-full"/>,
+          command: () => {
+             navigate('cultures')
+          }
+      },
+      {
+          label: 'Type de Capteurs',
+          icon: <MdSensors className="h-6 w-6 bg-white text-green-600 rounded-full"/>,
+          command: () => {
+            navigate('types')
+          }
+      }
+  ];
+
   return (
     <>
    <Sidebar visible={visible} onHide={() => setVisible(false)}>
@@ -27,9 +47,9 @@ export const Navbar = () => {
     <div className="flex flex-col space-y-1">
     <Link to="profil" className="inline-block w-full px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Mon Profil</Link>
    <Link to="capteurs" className="inline-block w-full px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Gestions des Capteurs</Link>
-   <Link to="cultures" className="inline-block w-full px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Gestions des cultures</Link>
    <Link to="champs" className="inline-block w-full px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Gestion des champs</Link>
    <Link to="users" className="inline-block w-full px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Gestion des Utilisateurs</Link>
+   <SplitButton label="Parametres" model={items}></SplitButton>
    <button onClick={logout} className="inline-block w-full px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Se Déconnecter</button>
     </div>
 </Sidebar>
@@ -49,13 +69,15 @@ export const Navbar = () => {
         <Link to="capteurs" className="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Capteurs</Link>
         </li>
         <li>
-        <Link to="cultures" className="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Cultures</Link>
         </li>
         <li>
         <Link to="champs" className="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Champs</Link>
         </li>
         <li>
         <Link to="users" className="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Utilisateurs</Link>
+        </li>
+        <li>
+        <SplitButton label="Parametres" model={items}></SplitButton>
         </li>
         <li>
         <button onClick={logout} className="inline-block w-full px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Se Déconnecter</button>

@@ -6,7 +6,7 @@ import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 
 import { locale, addLocale } from 'primereact/api';
-import { env } from './components/env';
+import { env } from './env';
 
 addLocale('fr', {
   firstDayOfWeek: 1,
