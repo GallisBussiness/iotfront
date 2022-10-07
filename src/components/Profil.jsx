@@ -35,7 +35,6 @@ export const Profil = ({auth}) => {
         <li className="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong className="text-slate-700">Mobile:</strong> &nbsp; {auth?.tel}</li>
         <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit"><strong className="text-slate-700">Role:</strong> &nbsp; {auth?.role}</li>
       </ul>
-      <button className="inline-block w-1/6 px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">MODIFIER</button>
     </div>
   </div>
 </div>
