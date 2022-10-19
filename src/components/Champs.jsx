@@ -135,7 +135,7 @@ export const Champs = () => {
       </div>
     </div>
   </div>
-  <div className="datatable-doc mt-4">
+  <div className="datatable-doc mt-4 mx-10">
             <div className="card">
             <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
                 <DataTable value={Champs} paginator className="p-datatable-customers" header={header} rows={10}
@@ -146,6 +146,8 @@ export const Champs = () => {
                     currentPageReportTemplate="Voir {first} de {last} à {totalRecords} Champs">
                     <Column selectionMode="multiple" headerStyle={{ width: '3em' }}></Column>
                     <Column field="nom" header="Nom" sortable style={{ minWidth: '14rem' }} />
+                    <Column field="user" header="Proprietaire" sortable style={{ minWidth: '14rem' }} />
+                    <Column field="superficie" header="Superficie" sortable style={{ minWidth: '14rem' }} />
                     <Column headerStyle={{ width: '4rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center', overflow: 'visible' }} body={actionBodyTemplate} />
                 </DataTable>
             </div>

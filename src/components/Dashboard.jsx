@@ -9,6 +9,7 @@ import { Champs } from "./Champs"
 import Cultures from "./Cultures"
 import { Profil } from "./Profil"
 import Users from "./Users"
+import Noeud from "./Noeud"
 
 const Dashboard = () => {
 
@@ -29,6 +30,7 @@ const Dashboard = () => {
      <Route path="capteurs" element={<Capteurs auth={data}/>} />
      <Route path="champs" element={<Champs auth={data}/>} />
      <Route path="cultures" element={<Cultures auth={data}/>} />
+     <Route path="noeuds" element={<Noeud auth={data}/>} />
      <Route path="types" element={<Types auth={data}/>} />
      <Route path="users" element={<Users auth={data}/>} />
      </Routes>

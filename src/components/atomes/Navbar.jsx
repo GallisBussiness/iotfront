@@ -6,6 +6,7 @@ import { useQueryClient } from "react-query";
 import { useSignOut } from "react-auth-kit";
 import { GiTreeBranch } from "react-icons/gi";
 import { MdSensors } from "react-icons/md";
+import { AiOutlineSubnode } from "react-icons/ai";
 
 export const Navbar = () => {
     const [visible,setVisible] = useState(false);
@@ -35,7 +36,14 @@ export const Navbar = () => {
           command: () => {
             navigate('types')
           }
-      }
+      },
+      {
+        label: 'Parametrage Noeud',
+        icon: <AiOutlineSubnode className="h-6 w-6 bg-white text-green-600 rounded-full"/>,
+        command: () => {
+          navigate('noeuds')
+        }
+    }
   ];
 
   return (

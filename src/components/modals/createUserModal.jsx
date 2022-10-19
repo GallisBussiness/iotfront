@@ -26,7 +26,7 @@ const CreateUserModal = ({ isOpen, onResolve, onReject }) => {
       });
 
       const roles = [
-        {label: 'Utilisateur',value: 'user'},
+        {label: 'Agriculteur',value: 'user'},
         {label: 'Administrateur',value: 'admin'}
       ];
       const getFormErrorMessage = (name) => {
