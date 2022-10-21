@@ -41,12 +41,12 @@ function UpdateChampModal({ isOpen, onResolve, onReject,champ }) {
 
 const onCreate = data => {
    const {user} = data;
-    onResolve({...data, user: user.value});
+    onResolve({_id: champ._id,...data, user: user.value});
   };
 
   return (
     <>
-       <Dialog header="Création de champs" visible={isOpen} onHide={() => onReject(false)} className="w-1/2">
+       <Dialog header="Modification de champs" visible={isOpen} onHide={() => onReject(false)} className="w-1/2">
     <form  className="mb-3" onSubmit={handleSubmit(onCreate)} method="POST">
     <div className="mb-3 flex flex-col space-y-2">
             <label htmlFor="nom" className="form-label">Nom</label>
@@ -80,7 +80,7 @@ const onCreate = data => {
              text-white uppercase align-middle transition-all rounded-lg cursor-pointer
               bg-gradient-to-tl from-green-700 to-green-300 leading-pro text-xs ease-soft-in
                tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85
-                hover:shadow-soft-xs mr-2"> CREER</button>
+                hover:shadow-soft-xs mr-2"> Mettre à jour</button>
             <button onClick={() => onReject(false)} className="inline-block px-6 py-3 font-bold text-center
              text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl
               from-red-700 to-red-300 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md

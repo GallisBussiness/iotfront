@@ -109,7 +109,7 @@ export const Champs = () => {
 
   const actionBodyTemplate = (rowData) => {
       return <div className="flex items-center justify-center space-x-1">
-      <button Champ="button" onClick={() => handleUpdateChamp(rowData)} className="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-300 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs" ><BsFillPenFill className="text-white inline"/></button>
+      <button type="button" onClick={() => handleUpdateChamp(rowData)} className="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-300 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs" ><BsFillPenFill className="text-white inline"/></button>
       </div>;
       
   }
@@ -146,7 +146,7 @@ export const Champs = () => {
                     currentPageReportTemplate="Voir {first} de {last} à {totalRecords} Champs">
                     <Column selectionMode="multiple" headerStyle={{ width: '3em' }}></Column>
                     <Column field="nom" header="Nom" sortable style={{ minWidth: '14rem' }} />
-                    <Column field="user" header="Proprietaire" sortable style={{ minWidth: '14rem' }} />
+                    <Column field="user.prenom" header="Proprietaire" sortable style={{ minWidth: '14rem' }} />
                     <Column field="superficie" header="Superficie" sortable style={{ minWidth: '14rem' }} />
                     <Column headerStyle={{ width: '4rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center', overflow: 'visible' }} body={actionBodyTemplate} />
                 </DataTable>

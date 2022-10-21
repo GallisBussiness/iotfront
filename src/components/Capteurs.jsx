@@ -110,7 +110,7 @@ const Capteurs = () => {
 
   const actionBodyTemplate = (rowData) => {
       return <div className="flex items-center justify-center space-x-1">
-      <button Capteur="button" onClick={() => handleUpdateCapteur(rowData)} className="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-300 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs" ><BsFillPenFill className="text-white inline"/></button>
+      <button type="button" onClick={() => handleUpdateCapteur(rowData)} className="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-700 to-green-300 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs" ><BsFillPenFill className="text-white inline"/></button>
       </div>;
       
   }
@@ -146,6 +146,8 @@ const Capteurs = () => {
                     currentPageReportTemplate="Voir {first} de {last} à {totalRecords} Capteurs">
                     <Column selectionMode="multiple" headerStyle={{ width: '3em' }}></Column>
                     <Column field="nom" header="Nom" sortable style={{ minWidth: '14rem' }} />
+                    <Column field="type.nom" header="Type de Capteur" sortable style={{ minWidth: '14rem' }} />
+                    <Column field="noeud.nom" header="Noeud" sortable style={{ minWidth: '14rem' }} />
                     <Column headerStyle={{ width: '4rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center', overflow: 'visible' }} body={actionBodyTemplate} />
                 </DataTable>
             </div>

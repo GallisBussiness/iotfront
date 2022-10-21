@@ -8,6 +8,7 @@ import { create } from 'react-modal-promise'
 import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { getCultures } from '../../services/cultureservice';
+import { getChamps } from '../../services/champservice';
 
 const schema = yup.object({
     nom: yup.string()
@@ -29,6 +30,16 @@ function CreateNoeudModal({ isOpen, onResolve, onReject }) {
         } 
     });
 
+    const [champs,setChamps] = useState([])
+    const qk = ['get_Champs']
+
+    useQuery(qk, () => getChamps(), {
+        onSuccess: (_) => {
+            const newcl = _.map(c => ({value:c._id,label: c.nom}));
+            setChamps(newcl);
+        } 
+    });
+
     const defaultValues = {nom: '', champ: '', culture:''};
     const {control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
@@ -40,8 +51,8 @@ function CreateNoeudModal({ isOpen, onResolve, onReject }) {
   };
 
   const onCreate = data => {
-    const {culture} = data;
-      onResolve({...data, culture: culture.value});
+    const {culture, champ} = data;
+      onResolve({...data, culture: culture.value,champ: champ.value});
     };
 
 
@@ -58,6 +69,16 @@ function CreateNoeudModal({ isOpen, onResolve, onReject }) {
               placeholder:text-green-500 focus:border-green-300 focus:outline-none" id="nom" placeholder="Entrer le nom" />
              )}/>
               {getFormErrorMessage('nom')} 
+            </div>
+            <div className="mb-3 flex flex-col justify-center">
+            <label htmlFor="champ" className="form-label">Champs</label>
+            <Controller control={control} name="champ" render={({field}) => (
+                    <Select
+                    {...field}
+                    options={champs}
+                  />
+            )} />
+              {getFormErrorMessage('champ')} 
             </div>
             <div className="mb-3 flex flex-col justify-center">
             <label htmlFor="culture" className="form-label">Culture</label>
