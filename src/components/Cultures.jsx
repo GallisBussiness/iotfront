@@ -146,7 +146,8 @@ const Cultures = () => {
                     currentPageReportTemplate="Voir {first} de {last} à {totalRecords} cultures">
                     <Column selectionMode="multiple" headerStyle={{ width: '3em' }}></Column>
                     <Column field="nom" header="Nom" sortable style={{ minWidth: '14rem' }} />
-                    <Column field="phsol" header="PH du sol" sortable style={{ minWidth: '14rem' }} />
+                    <Column field="phsolmin" header="PH MIN du sol" sortable style={{ minWidth: '14rem' }} />
+                    <Column field="phsolmax" header="PH MAX du sol" sortable style={{ minWidth: '14rem' }} />
                     <Column field="humiditesolmin" header="Humidité minimun sol" sortable  style={{ minWidth: '8rem' }}/>
                     <Column field="humiditesolmax" header="Humidité maximum sol" sortable  style={{ minWidth: '8rem' }}/>
                     <Column field="humiditefeuille" header="Humidité feuille" sortable  style={{ minWidth: '8rem' }}/>

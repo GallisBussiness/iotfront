@@ -10,7 +10,8 @@ import { InputTextarea} from 'primereact/inputtextarea'
 const schema = yup.object({
     nom: yup.string()
     .required(),
-   phsol: yup.number().required(),
+   phsolmin: yup.number().required(),
+   phsolmax: yup.number().required(),
    humiditesolmin: yup.number().required(),
    humiditesolmax: yup.number().required(),
    humiditefeuille: yup.number().required(),
@@ -20,7 +21,7 @@ const schema = yup.object({
 
 function CreateCultureModal({ isOpen, onResolve, onReject }) {
 
-    const defaultValues = {nom: '', phsol: 0, humiditesolmin: 0, humiditesolmax: 0, humiditefeuille: 0, description: ''};
+    const defaultValues = {nom: '', phsolmin: 0,phsolmax:0, humiditesolmin: 0, humiditesolmax: 0, humiditefeuille: 0, description: ''};
       const {control, handleSubmit, formState: { errors } } = useForm({
           resolver: yupResolver(schema),
         defaultValues
@@ -49,31 +50,39 @@ function CreateCultureModal({ isOpen, onResolve, onReject }) {
               {getFormErrorMessage('nom')} 
             </div>
             <div className="mb-3 flex flex-col space-y-2">
-            <label htmlFor="phsol" className="form-label">PH du sol</label>
-            <Controller control={control} name="phsol" render={({field}) => (
-                <InputNumber value={field.value} onValueChange={(e) => field.onChange(e.value)}  />
+            <label htmlFor="phsolmin" className="form-label">PH MIN du sol</label>
+            <Controller control={control} name="phsolmin" render={({field}) => (
+                <InputNumber value={field.value} onValueChange={(e) => field.onChange(e.value)} mode="decimal" minFractionDigits={2} />
             // <input type="text" {...field} className="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-green-300 bg-white bg-clip-padding px-3 py-2 font-normal text-green-700 outline-none transition-all placeholder:text-green-500 focus:border-green-300 focus:outline-none" id="nom" placeholder="Entrer le nom" autoFocus />
              )}/>
-              {getFormErrorMessage('phsol')} 
+              {getFormErrorMessage('phsolmin')} 
+            </div>
+            <div className="mb-3 flex flex-col space-y-2">
+            <label htmlFor="phsolmax" className="form-label">PH MAX du sol</label>
+            <Controller control={control} name="phsolmax" render={({field}) => (
+                <InputNumber value={field.value} onValueChange={(e) => field.onChange(e.value)} mode="decimal" minFractionDigits={2} />
+            // <input type="text" {...field} className="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-green-300 bg-white bg-clip-padding px-3 py-2 font-normal text-green-700 outline-none transition-all placeholder:text-green-500 focus:border-green-300 focus:outline-none" id="nom" placeholder="Entrer le nom" autoFocus />
+             )}/>
+              {getFormErrorMessage('phsolmax')} 
             </div>
             <div className="mb-3 flex flex-col space-y-2">
             <label htmlFor="humiditesolmin" className="form-label">Humidité minimum du sol</label>
             <Controller control={control} name="humiditesolmin" render={({field}) => (
-                <InputNumber value={field.value} onValueChange={(e) => field.onChange(e.value)}  />
+                <InputNumber value={field.value} onValueChange={(e) => field.onChange(e.value)} mode="decimal" minFractionDigits={2} />
              )}/>
               {getFormErrorMessage('humiditesolmin')} 
             </div>
             <div className="mb-3 flex flex-col space-y-2">
             <label htmlFor="humiditesolmax" className="form-label">Humidité maximum du sol</label>
             <Controller control={control} name="humiditesolmax" render={({field}) => (
-                <InputNumber value={field.value} onValueChange={(e) => field.onChange(e.value)}  />
+                <InputNumber value={field.value} onValueChange={(e) => field.onChange(e.value)} mode="decimal" minFractionDigits={2} />
              )}/>
               {getFormErrorMessage('humiditesolmax')} 
             </div>
             <div className="mb-3 flex flex-col space-y-2">
             <label htmlFor="humiditefeuille" className="form-label">Humidité des feuilles</label>
             <Controller control={control} name="humiditefeuille" render={({field}) => (
-                <InputNumber value={field.value} onValueChange={(e) => field.onChange(e.value)}  />
+                <InputNumber value={field.value} onValueChange={(e) => field.onChange(e.value)} mode="decimal" minFractionDigits={2} />
              )}/>
               {getFormErrorMessage('humiditefeuille')} 
             </div>
