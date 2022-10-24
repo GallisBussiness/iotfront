@@ -10,6 +10,7 @@ import Cultures from "./Cultures"
 import { Profil } from "./Profil"
 import Users from "./Users"
 import Noeud from "./Noeud"
+import States from "./States"
 
 const Dashboard = () => {
 
@@ -25,7 +26,8 @@ const Dashboard = () => {
     <div className="overflow-x-hidden">
     <Navbar />
      <Routes>
-     <Route path="" element={<Profil auth={data} />} />
+     <Route path="" element={<States auth={data} />} />
+     <Route path="states" element={<States auth={data} />} />
      <Route path="profil" element={<Profil auth={data}/>} />
      <Route path="capteurs" element={<Capteurs auth={data}/>} />
      <Route path="champs" element={<Champs auth={data}/>} />
