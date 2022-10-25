@@ -7,28 +7,16 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 
 import { create } from 'react-modal-promise'
-import { getCultures } from '../../services/cultureservice';
 import { getChamps } from '../../services/champservice';
 
 const schema = yup.object({
     nom: yup.string()
     .required(),
    champ: yup.string().required(),
-   culture: yup.object().required(),
   }).required();
 
 
 function UpdateNoeudModal({ isOpen, onResolve, onReject, noeud }) {
-
-    const [cultures,setCultures] = useState([])
-    const qkc = ['get_Cultures']
-
-    useQuery(qkc, () => getCultures(), {
-        onSuccess: (_) => {
-            const newcl = _.map(c => ({value:c._id,label: c.nom}));
-            setCultures(newcl);
-        } 
-    });
 
     const [champs,setChamps] = useState([])
     const qk = ['get_Champs']
@@ -40,7 +28,7 @@ function UpdateNoeudModal({ isOpen, onResolve, onReject, noeud }) {
         } 
     });
     
-    const defaultValues = {nom: noeud?.nom, champ: noeud?.champ,culture: noeud?.culture};
+    const defaultValues = {nom: noeud?.nom, champ: noeud?.champ};
     const {control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
       defaultValues
@@ -78,16 +66,6 @@ function UpdateNoeudModal({ isOpen, onResolve, onReject, noeud }) {
                   />
             )} />
               {getFormErrorMessage('champ')} 
-            </div>
-            <div className="mb-3 flex flex-col justify-center">
-            <label htmlFor="culture" className="form-label">Culture</label>
-            <Controller control={control} name="culture" render={({field}) => (
-                    <Select
-                    {...field}
-                    options={cultures}
-                  />
-            )} />
-              {getFormErrorMessage('culture')} 
             </div>
             <button  type="submit" className="inline-block px-6 py-3 font-bold text-center
              text-white uppercase align-middle transition-all rounded-lg cursor-pointer

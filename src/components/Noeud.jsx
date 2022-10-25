@@ -95,6 +95,9 @@ function Noeud() {
            deleteD(selectedNoeuds[i]?._id);
         }
     }
+
+ 
+    const CultureTemplate = (row) => row.culture ? row.culture.nom : "Neant";
   
     const renderHeader = () => {
         return (
@@ -148,7 +151,7 @@ function Noeud() {
                     <Column selectionMode="multiple" headerStyle={{ width: '3em' }}></Column>
                     <Column field="nom" header="Nom" sortable style={{ minWidth: '14rem' }} />
                     <Column field="champ.nom" header="Champs" sortable style={{ minWidth: '14rem' }} />
-                    <Column field="culture.nom" header="Culture" sortable style={{ minWidth: '14rem' }} />
+                    <Column field="" header="Culture" body={CultureTemplate} sortable style={{ minWidth: '14rem' }} />
                     <Column headerStyle={{ width: '4rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center', overflow: 'visible' }} body={actionBodyTemplate} />
                 </DataTable>
             </div>
