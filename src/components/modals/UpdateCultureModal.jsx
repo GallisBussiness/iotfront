@@ -39,7 +39,7 @@ function UpdateCultureModal({ isOpen, onResolve, onReject, culture }) {
 
   return (
     <>
-     <Dialog header="Création de culture" visible={isOpen} onHide={() => onReject(false)} className="w-1/2">
+     <Dialog header="Modification de culture" visible={isOpen} onHide={() => onReject(false)} className="w-1/2">
     <form  className="mb-3" onSubmit={handleSubmit(onUpdate)} method="POST">
     <div className="mb-3 flex flex-col space-y-2">
             <label htmlFor="nom" className="form-label">Nom</label>
