@@ -37,7 +37,7 @@ function AssociateCultureModal({ isOpen, onResolve, onReject, noeud }) {
 
   const onCreate = data => {
     const {culture} = data;
-      onResolve({_id: noeud?._id,culture: culture.value._id});
+      onResolve({_id: noeud?._id,culture: culture.value});
     };
   return (
     <>

@@ -98,7 +98,6 @@ function Noeuds() {
 
  
     const CultureTemplate = (row) => {
-        console.log(row)
         return row.culture ? row.culture.nom : "Neant";
     }
   
