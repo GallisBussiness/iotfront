@@ -7,6 +7,7 @@ import Login from "./components/Login";
 
 import { locale, addLocale } from 'primereact/api';
 import { env } from './env';
+import { MantineProvider } from '@mantine/core';
 
 addLocale('fr', {
   firstDayOfWeek: 1,
@@ -36,7 +37,8 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <MantineProvider withGlobalStyles>
+      <QueryClientProvider client={queryClient}>
     <AuthProvider authType = {'localstorage'}
                   authName={env.tokenStorageName}
                   cookieDomain={window.location.hostname}
@@ -52,6 +54,8 @@ function App() {
    
    </AuthProvider> 
    </QueryClientProvider>
+    </MantineProvider>
+    
   );
 }
 
