@@ -39,7 +39,7 @@ function CapteurDht11Data({capteur}) {
     const {data} = useQuery(key, () => getCapteurData(capteur._id), {
       onSuccess:(_) => {
        const temp = _.map(d => Math.round(d.temperature)).reverse();
-       const labels = _.map(d => d.capteur.nom);
+       const labels = _.map((d,i )=> `${i}`);
        const tempObj  = {
                 label: 'Température en °C',
                 data: temp,
