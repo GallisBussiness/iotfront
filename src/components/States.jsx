@@ -51,7 +51,7 @@ function States() {
   const handleViewNoeud = (id) => navigate(`/dashboard/noeuds/${id}`);
 
   return (
-    <>
+    <div className="min-h-screen">
      <div className="flex flex-wrap mt-6 -mx-3">
   <div className="w-full px-3 mb-6 lg:mb-0 lg:flex-none">
     <div className="relative flex flex-col h-40 min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
@@ -104,7 +104,7 @@ function States() {
 </div>
   <Toast ref={toast} />
     <ModalContainer />
-    </>
+    </div>
   )
 }
 

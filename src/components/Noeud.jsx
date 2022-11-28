@@ -13,7 +13,7 @@ function Noeud() {
     const {data: capteurs} = useQuery(qkc, () => getCapteursByNoeud(id))
   return (
     <>
-    <div className="flex items-center justify-between">
+   {capteurs?.length > 0 ? <> <div className="flex items-center justify-between">
     {capteurs?.map((cap,index) => (
       <div key={index}>
       <div className="w-full">
@@ -31,7 +31,14 @@ function Noeud() {
       </div>
       </div>
     ))}
-    </div>
+    </div></> : <> 
+    
+      <div className="flex flex-col items-center justify-center space-y-5 h-96 my-5">
+            <img src="/img/iot.png" className="w-64 h-64 object-cover" alt="no data" /> 
+            <h1 className="text-3xl font-bold uppercase">Pas De Capteurs Installés !</h1>
+      </div> 
+    </>} 
+   
     </>
   )
 }

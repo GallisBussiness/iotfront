@@ -2,15 +2,15 @@ import { Dialog } from 'primereact/dialog';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Controller, useForm } from 'react-hook-form';
-import Select from 'react-select'
 import { useQuery } from 'react-query';
 
 import { create } from 'react-modal-promise'
 import { getCultures } from '../../services/cultureservice';
 import { useState } from 'react';
+import { Radio } from '@mantine/core';
 
 const schema = yup.object({
-   culture: yup.object().required(),
+   culture: yup.string().required(),
   }).required();
 
 function AssociateCultureModal({ isOpen, onResolve, onReject, noeud }) {
@@ -31,27 +31,30 @@ function AssociateCultureModal({ isOpen, onResolve, onReject, noeud }) {
       defaultValues
     });
 
-    const getFormErrorMessage = (name) => {
-      return errors[name] && <small className="p-error">{errors[name].message}</small>
-  };
-
   const onCreate = data => {
-    const {culture} = data;
-      onResolve({_id: noeud?._id,culture: culture.value});
+      onResolve({_id: noeud?._id, ...data});
     };
   return (
     <>
      <Dialog header="Modification de Noeud" visible={isOpen} onHide={() => onReject(false)} className="w-1/2">
     <form  className="mb-3" onSubmit={handleSubmit(onCreate)} method="POST">
-            <div className="mb-3 flex flex-col justify-center">
-            <label htmlFor="culture" className="form-label">Cultures</label>
+            <div className="mb-3">
             <Controller control={control} name="culture" render={({field}) => (
-                    <Select
-                    {...field}
-                    options={cul}
-                  />
-            )} />
-              {getFormErrorMessage('culture')} 
+                  <Radio.Group
+                  value={field.value}
+                  onChange={(v) => field.onChange(v)}
+                  name="Cultures Favorables"
+                  orientation="vertical"
+                  label="Selectionez la culture"
+                  error={errors.culture && errors.culture.message}
+                  withAsterisk
+                >
+                 
+                 {cul?.map((c,i) => (
+                   <Radio key={i} value={c.value} label={c.label} />
+                 ))}
+                </Radio.Group>
+            )} /> 
             </div>
             <button  type="submit" className="inline-block px-6 py-3 font-bold text-center
              text-white uppercase align-middle transition-all rounded-lg cursor-pointer
